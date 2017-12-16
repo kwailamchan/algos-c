@@ -1,11 +1,11 @@
 /*
  * Write code to remove duplicates from an unsorted linked list.
+ * Write code to reverse an unsorted linked list.
+ * Write code to sort an unsorted linked list.
  */
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#define N 10
 
 struct Node
 {
@@ -85,6 +85,47 @@ void list_remove_duplicates (struct Node * node)
 }
 
 
+void list_reverse (struct Node ** list)
+{
+	struct Node * prev = NULL;
+	struct Node * current = * list;
+	struct Node * next;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	* list = prev;
+}
+
+
+void list_sort_bubble (struct Node * list)
+{
+	int temp;
+	struct Node * head, * current;
+
+	head = list;
+	while (head != NULL)
+	{
+		current = head;
+		while (current->next != NULL)
+		{
+			if (head->data > current->next->data)
+			{
+				temp = head->data;
+				head->data = current->next->data;
+				current->next->data = temp;
+			}
+			current = current->next;
+		}
+		head = head->next;
+	}
+}
+
+
 void test_linkedlist_init (void)
 {
 	struct Node * head = (struct Node*)malloc(sizeof(struct Node));
@@ -98,13 +139,17 @@ void test_linkedlist_init (void)
 	list_append(head, 1);
 	list_append(head, 6);
 
-	printf("list origin: "); list_traversal(head);
+	printf("list (origin): "); list_traversal(head);
 	list_remove_duplicates(head);
-	printf("list removed: "); list_traversal(head);
-
+	printf("list (duplicates removed): "); list_traversal(head);
+	list_reverse(&head);
+	printf("list (reverse): "); list_traversal(head);
+	list_sort_bubble(head);
+	printf("list (sort): "); list_traversal(head);
 
 	list_free (head);
 }
+
 
 int main(void)
 {
