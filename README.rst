@@ -2,6 +2,10 @@
 Algorithms C
 ##############################################################################
 
+Array
+
+- remove duplicates from an unsorted array
+
 LinkedList
 
 - sort an unsorted linked list
