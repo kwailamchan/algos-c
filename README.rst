@@ -2,11 +2,11 @@
 Algorithms C
 ##############################################################################
 
-Array
+[Array](./algos/array)
 
 - remove duplicates from an unsorted array
 
-LinkedList
+[LinkedList](./algos/linkedlist)
 
 - sort an unsorted linked list
 - reverse an unsorted linked list
@@ -15,4 +15,4 @@ LinkedList
 Tree
 
 - heap
-  - Huffman coding
+  - [Huffman coding](./algos/tree/huffman)
