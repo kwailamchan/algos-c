@@ -82,3 +82,6 @@ X / 2 = X >> 1
 X / 2^k = X >> k
 ```
 
+## References
+
+- [Speeds of << >> multiplication and division](https://softwareengineering.stackexchange.com/questions/234967/speeds-of-multiplication-and-division)

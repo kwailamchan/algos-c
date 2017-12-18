@@ -30,5 +30,4 @@ Tree
 
 [Bit](./algos/bit)
 
-- bit-wise operators: ``~/!(not) &/&&(and), |/||(or) ^(xor)``
-- shift operators: ``<< >>``
+- decimal to binary and binary to decimal
