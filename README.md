@@ -31,3 +31,7 @@ Tree
 [Bit](./algos/bit)
 
 - decimal to binary and binary to decimal
+
+[String](./algos/string)
+
+- reverse a string
