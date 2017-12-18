@@ -14,13 +14,15 @@ $ make all
 
 [Array](./algos/array)
 
-- remove duplicates from an unsorted array
+- to remove duplicates from an unsorted array
+- to remove duplicates from an sorted array
+- to reverse an unsorted array
 
 [LinkedList](./algos/linkedlist)
 
-- sort an unsorted linked list
-- reverse an unsorted linked list
-- remove duplicates from an unsorted linked list
+- to sort an unsorted linked list
+- to reverse an unsorted linked list
+- to remove duplicates from an unsorted linked list
 
 Tree
 
@@ -34,4 +36,4 @@ Tree
 
 [String](./algos/string)
 
-- reverse a string
+- to reverse a string

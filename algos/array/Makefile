@@ -4,10 +4,12 @@ CC_FLAGS = -std=c99
 
 
 all: clean build
-	gcc $(CC_FLAGS) -o $(BUILD_DIR)/array_stack array_stack.c
-	$(BUILD_DIR)/array_stack
-	gcc $(CC_FLAGS) -o $(BUILD_DIR)/array_heap array_heap.c
-	$(BUILD_DIR)/array_heap
+	gcc $(CC_FLAGS) -o $(BUILD_DIR)/array_reverse array_reverse.c
+	$(BUILD_DIR)/array_reverse
+	gcc $(CC_FLAGS) -o $(BUILD_DIR)/array_sorted array_sorted.c
+	$(BUILD_DIR)/array_sorted
+	gcc $(CC_FLAGS) -o $(BUILD_DIR)/array_unsorted array_unsorted.c
+	$(BUILD_DIR)/array_unsorted
 
 build:
 	mkdir $(BUILD_DIR)
