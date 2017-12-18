@@ -1,5 +1,17 @@
 /*
  * Huffman Coding (Greedy Algorithms)
+ * ref1: A Method for the Construction of Minimum-Redundancy Codes
+ *       @http://www.cse.iitd.ernet.in/~pkalra/col783/huffman_1952.pdf
+ *
+ * ref2: Huffman Coding @https://www.cs.duke.edu/csed/poop/huff/info/
+ *
+ *  XXXXXXYYZ ([origin bits]: (2 * 6) + (2 * 2) + (2 * 1) = 18 bits)
+ *   with huffman coding: (1 * 6) + (2 * 2) + (2 * 1) = 11 bits) 
+ *     - X: 0
+ *     - Y: 10
+ *     - Z: 11
+ *
+ *  
  *
  *    huffman()
  *        +----- build_huffman_tree()
