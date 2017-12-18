@@ -3,15 +3,27 @@
  *
  *    huffman()
  *        +----- build_huffman_tree()
+ *                     +
  *                     +------ create_and_build_minheap()
- *                                       +----- init_minheap()
- *                                       +----- create_minheap_node()
- *                                       +----- build_minheap()
- *                                                   +----- min_heapify()
- *                                                               +---- swap_minheap_node()
+ *                     +                  +----- init_minheap()
+ *                     +                  +----- create_minheap_node()
+ *                     +                  +----- build_minheap()
+ *                     +                              +----- min_heapify()
+ *                     +                                          +---- swap_minheap_node()
+ *                     +------ is_size_one()
+ *                     +------ extract_min()
+ *                     +------ insert_minheap()
+ *
+ *    print_tree()
+ *         +---- print_array()
+ *         +---- is_leaf()
  */
 
+#include <stdio.h>
 #include <stdlib.h>
+
+#define TREE_MAX_HEIGHT 100
+
 
 struct MinHeapNode
 {
@@ -104,24 +116,101 @@ struct MinHeap * create_and_build_minheap(char data[], int freq[], int size)
 }
 
 
+int is_size_one(struct MinHeap * minheap)
+{
+	return (minheap->size == 1);
+}
+
+
+struct MinHeapNode * extract_min(struct MinHeap * minheap)
+{
+	struct MinHeapNode * node = minheap->array[0];
+	minheap->array[0] = minheap->array[minheap->size - 1];
+	--minheap->size;
+	min_heapify(minheap, 0);
+	return node;
+}
+
+
+void insert_minheap(struct MinHeap * minheap, struct MinHeapNode * node)
+{
+	++minheap->size;
+	int i = minheap->size - 1;
+	while (i && node->freq < minheap->array[(i - 1) / 2]->freq)
+	{
+		minheap->array[i] = minheap->array[(i - 1) / 2];
+		i = (i - 1) / 2;
+	}
+	minheap->array[i] = node;
+}
+
+
 struct MinHeapNode * build_huffman_tree(char data[], int freq[], int size)
 {
 	struct MinHeapNode * left;
 	struct MinHeapNode * right;
 	struct MinHeapNode * top;
 
-	struct MinHeap * min_heap = create_and_build_minheap(data, freq, size);	
+	struct MinHeap * minheap = create_and_build_minheap(data, freq, size);
+	while (!is_size_one(minheap))
+	{
+		left = extract_min(minheap);
+		right = extract_min(minheap);
+
+		top = create_minheap_node('$', left->freq + right->freq);
+		top->left = left;
+		top->right = right;	
+		insert_minheap(minheap, top);
+	}
+
+	return extract_min(minheap);
+}
+
+
+int is_leaf(struct MinHeapNode * root)
+{
+	return !(root->left) && !(root->right);
+}
+
+
+void print_array(int array[], int n)
+{
+	for (int i = 0; i < n; ++i)
+		printf("%d", array[i]);
+	printf("\n");
+}
+
+
+void print_tree(struct MinHeapNode * root, int array[], int top)
+{
+	if (root->left)
+	{
+		array[top] = 0;
+		print_tree(root->left, array, top+1);
+	}
+
+	if (root->right)
+	{
+		array[top] = 1;
+		print_tree(root->right, array, top+1);
+	}
+
+	if (is_leaf(root))
+	{
+		printf("%c: ", root->data);
+		print_array(array, top);
+	}
 }
 
 
 void huffman(char data[], int freq[], int size)
 {
 	struct MinHeapNode * root = build_huffman_tree(data, freq, size);	
+
+	int array[TREE_MAX_HEIGHT];
+	int top = 0;
+	print_tree(root, array, top);
 }
-
-
-/* ---------------------------------------------------------------------------------------- */
-
 
 
 /* ---------------------------------------------------------------------------------------- */
