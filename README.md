@@ -1,6 +1,17 @@
 # Algorithms C
 
 
+## Getting Started
+
+```
+# cd <path/to/algo>
+$ cd linkedlist
+$ make all
+```
+
+## Algorithms List
+
+
 [Array](./algos/array)
 
 - remove duplicates from an unsorted array
