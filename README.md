@@ -26,3 +26,9 @@ Tree
 
 - heap
   - [Huffman coding](./algos/tree/huffman)
+
+
+[Bit](./algos/bit)
+
+- bit-wise operators: ``~/!(not) &/&&(and), |/||(or) ^(xor)``
+- shift operators: ``<< >>``
