@@ -33,6 +33,7 @@ Tree
 [Bit](./algos/bit)
 
 - decimal to binary and binary to decimal
+- hamming distance with left and right shift
 
 [String](./algos/string)
 
